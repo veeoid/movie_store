@@ -10,9 +10,17 @@ const userInputs = addMovieModal.querySelectorAll("input");
 
 const movieList = document.getElementById("movie-list");
 
+const movies = [];
+
 const toggleMovieModal = () => {
   addMovieModal.classList.toggle("visible");
   toggleBackdrop();
+};
+
+const clearMovieInput = () => {
+  for (const usrInput of userInputs) {
+    usrInput.value = "";
+  }
 };
 
 const toggleBackdrop = () => {
@@ -40,8 +48,15 @@ const addMovieHandler = () => {
   ) {
     alert("Invalid Input");
   }
+  const newMovie = {
+    title: titleValue,
+    image: imageValue,
+    rating: ratingValue,
+  };
+  movies.push(newMovie);
+  console.log(movies);
   toggleMovieModal();
-  //   list = document.createElement();
+  clearMovieInput();
 };
 
 startAddMovieButton.addEventListener("click", toggleMovieModal);
